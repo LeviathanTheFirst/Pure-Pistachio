@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* next/font variables are set on <html> at runtime — bridge into Tailwind
+     utilities (font-sans, font-display). `inline` keeps the var() reference. */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair-display);
+
+  --color-background: var(--cream);
+  --color-foreground: var(--charcoal);
+}
+
+@theme {
+  /* ------------------------------------------------------------------ *
+   * Pure Pistachio brand palette
+   * ------------------------------------------------------------------ */
+  --color-primary: #5a8a4a; /* pistachio green */
+  --color-primary-light: #6b9e5a; /* lighter pistachio — hover / secondary */
+  --color-primary-soft: #e7f0e2; /* light pistachio — soft card fill */
+  --color-cream: #f5f1e8; /* warm cream background */
+  --color-charcoal: #1c1e1b; /* text / dark sections */
+  --color-charcoal-80: rgb(28 30 27 / 0.8);
+  --color-charcoal-70: rgb(28 30 27 / 0.72);
+  --color-stone: #d9d5cb; /* dividers / muted background */
+  --color-gold: #d7a323; /* harvest gold — accent, sparing use */
+  --color-white: #ffffff;
+  --color-white-80: rgb(255 255 255 / 0.8);
+  --color-white-70: rgb(255 255 255 / 0.72);
+  --color-white-25: rgb(255 255 255 / 0.25);
+  --color-cream-90: rgb(245 241 232 / 0.9);
+  --color-cream-80: rgb(245 241 232 / 0.8);
+
+  /* ------------------------------------------------------------------ *
+   * Fluid type scale (desktop / mobile from the design brief)
+   * Hero H1 72–96px / 44–56px · H2 48–64px / 34–42px · H3 24–32px / 22–
+   * 28px · Body 17–19px / 16–18px · Eyebrow 12–14px / 11–13px ·
+   * Metric 56–86px / 42–58px
+   * ------------------------------------------------------------------ */
+  --text-hero: clamp(2.75rem, 5vw + 1.25rem, 6rem);
+  --text-hero--line-height: 1.05;
+  --text-hero--letter-spacing: -0.01em;
+
+  --text-h2: clamp(2.125rem, 2.5vw + 1.25rem, 4rem);
+  --text-h2--line-height: 1.10;
+
+  --text-h3: clamp(1.375rem, 0.75vw + 1.125rem, 2rem);
+  --text-h3--line-height: 1.2;
+
+  --text-body: clamp(1rem, 0.25vw + 0.9375rem, 1.1875rem);
+  --text-body--line-height: 1.65;
+
+  --text-lead: clamp(1.125rem, 0.4vw + 1rem, 1.3125rem);
+  --text-lead--line-height: 1.5;
+
+  --text-eyebrow: clamp(0.6875rem, 0.25vw + 0.625rem, 0.875rem);
+  --text-eyebrow--line-height: 1.3;
+
+  --text-metric: clamp(2.625rem, 4.5vw + 1.5rem, 4.8375rem);
+  --text-metric--line-height: 0.95;
+
+  --text-tiny: 0.75rem;
+  --text-tiny--line-height: 1.4;
+
+  /* ------------------------------------------------------------------ *
+   * Spacing rhythm + content width
+   * ------------------------------------------------------------------ */
+  --spacing-section: clamp(4rem, 7vw + 1rem, 9rem);
+  --spacing-section-sm: clamp(3rem, 5vw + 1rem, 6rem);
+
+  --container-content: 90rem; /* 1440px max content width */
+  --container-narrow: 72rem; /* 1152px for tighter text layouts */
+
+  /* Letter spacing for uppercase labels */
+  --tracking-eyebrow: 0.12em;
+
+  /* Floating hero — animate-float utility */
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchored links for the fixed header. */
+    scroll-padding-top: 6.5rem;
+  }
+
+  /* The site header is fixed (mobile bar ≈76px), so it takes no layout space.
+     Reserve its height above <main> so the first section of any page — e.g.
+     the charcoal page-header band — never renders underneath it. sm eliminates
+     the reserve because the desktop header floats over content (bg-cream/95). */
+  main {
+    padding-top: 4.75rem; /* 76px */
+  }
+
+  @media (min-width: 640px) {
+    main {
+      padding-top: 0;
+    }
+  }
+
+  body {
+    background: var(--color-cream);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  /* Visible, high-contrast focus ring consistent across the site. Forest green
+     (#163D2D) reads at ~7:1 on cream and ~7:1 on white — passes WCAG 2.2
+     non-text on the light sections. */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Dark sections (forest/charcoal) flip the ring to cream — 10.7:1 on
+     #163D2D — since green is nearly invisible there (1.56:1). Mark a section
+     with `data-dark` when its surface is primary/charcoal. */
+  [data-dark] :focus-visible,
+  [data-dark]:focus-visible {
+    outline-color: var(--color-cream);
+  }
+
+  /* Light islands nested inside a dark scope (e.g. the cream mobile menu
+     panel inside the forest header) restore the forest green ring. */
+  [data-light] :focus-visible,
+  [data-light]:focus-visible {
+    outline-color: var(--color-primary);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Document scaffold ensures the body fills the viewport so footer sits at
+   the bottom consistently. */
+
+/* Coverflow carousel interaction states (fully inline-styled component, so
+   hover lives here on the class hooks added in 3-d-coverflow-carousel.tsx). */
+.coverflow-cta:hover {
+  background: var(--color-primary-light);
+  box-shadow: 0 6px 16px rgba(28, 30, 27, 0.25);
+  transform: translateY(-1px);
+}
+
+.coverflow-arrow:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Service card — single-element gradient-border reveal on hover.
+   The dual-layer background puts an opaque fill in padding-box and the
+   gradient in border-box. An opaque border covers the gradient by default;
+   transitioning it to transparent reveals the gradient underneath. No
+   overlay element, so the card face is always fully opaque. */
+.service-card {
+  background: linear-gradient(var(--color-white), var(--color-white)) padding-box,
+    linear-gradient(120deg, var(--color-stone), var(--color-stone)) border-box;
+}
+
+.service-card:hover {
+  background: linear-gradient(var(--color-primary-soft), var(--color-primary-soft))
+      padding-box,
+    linear-gradient(
+      120deg,
+      var(--color-gold),
+      var(--color-primary-light),
+      var(--color-gold)
+    ) border-box;
+}
