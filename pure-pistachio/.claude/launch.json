@@ -1,0 +1,38 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pure-pistachio-dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["next", "dev", "-p", "3111"],
+      "port": 3111,
+      "cwd": "D:/Pure Pistachio/pure-pistachio"
+    },
+    {
+      "name": "pure-pistachio-static-export",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "3112", "out"],
+      "port": 3112
+    },
+    {
+      "name": "pure-pistachio-static-export-alt",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "out"],
+      "port": 3119,
+      "autoPort": true
+    },
+    {
+      "name": "pure-pistachio-static-export-contact",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "3120", "out"],
+      "port": 3120,
+      "autoPort": false
+    },
+    {
+      "name": "pure-pistachio-static-export-3113",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "3113", "out"],
+      "port": 3113
+    }
+  ]
+}
