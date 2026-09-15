@@ -29,6 +29,8 @@ export interface CarouselItem {
   img: string;
   ctaText?: string;
   ctaUrl?: string;
+  /** Scale the crop of this item's image (zoom in). Default 1. */
+  imgScale?: number;
   /** When true, renders cards as photo-only with no text overlays or CTA buttons. */
   photoOnly?: boolean;
 }
@@ -40,6 +42,8 @@ export interface CoverFlowCarouselProps {
   autoplayDelay?: number;
   className?: string;
   onCtaClick?: (item: CarouselItem) => void;
+  /** Multiplier applied to card width/height on small screens (≤640px). */
+  mobileScale?: number;
 }
 
 export function CoverFlowCarousel({
@@ -49,6 +53,7 @@ export function CoverFlowCarousel({
   autoplayDelay = 5000,
   className = "",
   onCtaClick,
+  mobileScale = 1,
 }: CoverFlowCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -70,15 +75,25 @@ export function CoverFlowCarousel({
     const measure = () => {
       const sh = el.clientHeight;
       const sw = el.clientWidth;
-      const h = Math.min(Math.max(240, sh - 44), 720);
-      const w = Math.min(sw * 0.72, h * 0.825);
-      setCard({ w: Math.round(w), h: Math.round(h) });
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      const scale = isMobile && mobileScale < 1 ? mobileScale : 1;
+      let baseH = Math.min(Math.max(240, sh - 44), 720);
+      // On mobile cap the card height so the reduced carousel never
+      // dominates the small viewport.
+      if (isMobile && mobileScale < 1) {
+        baseH = Math.min(baseH, Math.round(window.innerHeight * 0.5));
+      }
+      const baseW = Math.min(sw * 0.72, baseH * 0.825);
+      setCard({
+        w: Math.round(baseW * scale),
+        h: Math.round(baseH * scale),
+      });
     };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [photoOnly]);
+  }, [photoOnly, mobileScale]);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % total);
@@ -230,6 +245,9 @@ export function CoverFlowCarousel({
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
+                    transform: item.imgScale ? `scale(${item.imgScale})` : undefined,
+                    transformOrigin: "center center",
+                    transition: "transform 800ms cubic-bezier(0.25, 1, 0.5, 1)",
                   }}
                 />
 

@@ -38,7 +38,7 @@ const METHODS: {
   },
   {
     label: "Head office",
-    value: "Fresno, CA, United States",
+    value: CONTACT_DATA.address.join(", "),
     href: "#office",
     icon: <MapPinIcon className="h-5 w-5" />,
   },
@@ -54,22 +54,22 @@ export function ContactDetail() {
     <div>
       <Reveal className="max-w-2xl">
         <Eyebrow>Get in touch</Eyebrow>
-        <Heading as="h2" className="mt-4 font-bold">
+        <Heading as="h2" className="mt-4 text-h3">
           Talk to the team
         </Heading>
-        <Body variant="lead" className="mt-5">
+        <Body variant="lead" className="mt-6 text-[1.3125rem]">
           A real human will pick up — send us the questions, and we&apos;ll
           route you to the right person.
         </Body>
       </Reveal>
 
-      <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
         {METHODS.map((m) => (
           <li key={m.label}>
-            <article className="flex h-full items-start gap-4 rounded-sm border border-stone bg-white p-5">
+            <article className="flex h-full items-start gap-5 rounded-sm border border-stone bg-white p-6">
               <span
                 aria-hidden
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-stone bg-primary-soft text-primary"
+                className="flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-stone bg-primary-soft text-primary"
               >
                 {m.icon}
               </span>
@@ -79,7 +79,7 @@ export function ContactDetail() {
                 </p>
                 <a
                   href={m.href}
-                  className="mt-1 inline-flex min-h-[2.75rem] items-center break-words text-[0.9375rem] text-charcoal underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
+                  className="mt-1 inline-flex min-h-[2.75rem] items-center break-words text-[1.125rem] text-charcoal underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
                 >
                   {m.value}
                 </a>
@@ -90,11 +90,11 @@ export function ContactDetail() {
       </ul>
 
       <Reveal className="mt-10">
-        <p className="flex items-start gap-3 rounded-sm border border-stone border-l-2 border-l-gold bg-primary-soft px-5 py-4 text-[0.9375rem] leading-relaxed text-charcoal">
-          <ClockIcon className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+        <p className="flex items-start gap-3 rounded-sm border border-stone border-l-2 border-l-gold bg-primary-soft px-6 py-5 text-base leading-relaxed text-charcoal">
+          <ClockIcon className="mt-1 h-6 w-6 shrink-0 text-primary" />
           <span>
             We reply within{" "}
-            <strong className="font-semibold text-charcoal">
+            <strong className="font-bold text-charcoal">
               one business day
             </strong>{" "}
             — usually sooner. No bots, no sales scripts.

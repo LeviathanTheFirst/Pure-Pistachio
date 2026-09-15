@@ -4,7 +4,7 @@
   /* next/font variables are set on <html> at runtime — bridge into Tailwind
      utilities (font-sans, font-display). `inline` keeps the var() reference. */
   --font-sans: var(--font-inter);
-  --font-display: var(--font-playfair-display);
+  --font-display: var(--font-nunito-sans);
 
   --color-background: var(--cream);
   --color-foreground: var(--charcoal);
@@ -14,21 +14,26 @@
   /* ------------------------------------------------------------------ *
    * Pure Pistachio brand palette
    * ------------------------------------------------------------------ */
-  --color-primary: #5a8a4a; /* pistachio green */
-  --color-primary-light: #6b9e5a; /* lighter pistachio — hover / secondary */
-  --color-primary-soft: #e7f0e2; /* light pistachio — soft card fill */
-  --color-cream: #f5f1e8; /* warm cream background */
-  --color-charcoal: #1c1e1b; /* text / dark sections */
+  --color-primary: #537A20; /* pistachio green */
+  --color-primary-light: #6f9a3f; /* lighter pistachio — hover / secondary */
+  --color-primary-soft: #EAF2D3; /* light pistachio — soft card fill */
+  --color-cream: #EAF2D3; /* light cream/green background */
+  --color-charcoal: #000000; /* text / dark sections */
   --color-charcoal-80: rgb(28 30 27 / 0.8);
   --color-charcoal-70: rgb(28 30 27 / 0.72);
   --color-stone: #d9d5cb; /* dividers / muted background */
   --color-gold: #d7a323; /* harvest gold — accent, sparing use */
-  --color-white: #ffffff;
+  --color-white: #F5F8E3; /* lighter cream — elevated card surface */
   --color-white-80: rgb(255 255 255 / 0.8);
   --color-white-70: rgb(255 255 255 / 0.72);
   --color-white-25: rgb(255 255 255 / 0.25);
-  --color-cream-90: rgb(245 241 232 / 0.9);
-  --color-cream-80: rgb(245 241 232 / 0.8);
+  --color-cream-90: rgb(234 242 211 / 0.9);
+  --color-cream-80: rgb(234 242 211 / 0.8);
+
+  /* Main-title display recipe — heavy weight, condensed width (wdth axis),
+     tight tracking for the all-caps Nunito Sans section headings. */
+  --tracking-title: -0.02em; /* precise letter-spacing for caps headings */
+  --font-variation-title: "wght" 900, "wdth" 82; /* condensed ~82% */
 
   /* ------------------------------------------------------------------ *
    * Fluid type scale (desktop / mobile from the design brief)
@@ -75,6 +80,34 @@
 
   /* Floating hero — animate-float utility */
   --animate-float: float 6s ease-in-out infinite;
+
+  /* Hero title shimmer — cream base with a gold highlight sweep */
+  --animate-title-shimmer: title-shimmer 9s ease-in-out infinite;
+}
+
+/* Gold shimmer sweep for the homepage hero title. Cream base with a
+   narrow bright-gold highlight band that glides left-to-right. */
+@keyframes title-shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.hero-shimmer {
+  background-image: linear-gradient(
+    105deg,
+    var(--color-cream) 0%,
+    var(--color-cream) 35%,
+    var(--color-gold) 46%,
+    #f5e6a3 50%,
+    var(--color-gold) 54%,
+    var(--color-cream) 65%,
+    var(--color-cream) 100%
+  );
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: var(--animate-title-shimmer);
 }
 
 @keyframes float {

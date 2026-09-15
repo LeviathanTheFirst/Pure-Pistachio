@@ -9,8 +9,8 @@ export function HomeScrollHero() {
         mediaType="image"
         mediaSrc="/images/Home Page/Pistachios/Home_1.webp"
         bgImageSrc="/images/Home Page/Pistachios/Home_2.webp"
-        title="Pistachios, supplied at every scale."
-        date="Pure Pistachio"
+        title="Pure Pistachio"
+        date="Supplied at every scale"
         scrollToExpand="Scroll to explore"
       />
     </div>

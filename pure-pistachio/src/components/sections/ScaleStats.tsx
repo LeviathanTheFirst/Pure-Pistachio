@@ -3,28 +3,32 @@
 import { motion, useReducedMotion } from "motion/react";
 import { StatCard } from "@/components/ui/StatCard";
 
-const STATS = [
+type Stat = {
+  value: string;
+  label: string;
+  tag?: string;
+};
+
+const STATS: Stat[] = [
   {
-    value: "10,000+ tons",
-    label: "Annual Processing Capacity",
-    note: "Shelling, roasting, and packing lines able to flex with your order size.",
+    value: "2,000+ tons",
+    label: "Sales Volume",
+    tag: "This Year",
   },
   {
-    value: "40+ markets",
-    label: "Countries & Markets Served",
-    note: "Direct and third-party distribution to foodservice, retail, and industrial buyers.",
+    value: "1,000+ tons",
+    label: "Services Delivered",
+    tag: "This Year",
   },
   {
-    value: "12-month",
+    value: "Year-Round",
     label: "Supply Availability",
-    note: "Year-round availability built on contracted grower partnerships and cold storage.",
   },
   {
-    value: "90%+",
-    label: "On-Time, To-Spec Delivery",
-    note: "Consistent grade, yield, and pack-out across recurring orders.",
+    value: "100%",
+    label: "On-Time Delivery",
   },
-] as const;
+];
 
 /**
  * Full-width solid forest-green band of large stat blocks. Tailored to the
@@ -52,7 +56,7 @@ export function ScaleStats() {
               <StatCard
                 value={stat.value}
                 label={stat.label}
-                note={stat.note}
+                tag={stat.tag}
                 metricClassName="lg:text-[clamp(1.875rem,2vw+0.875rem,3.125rem)]"
               />
             </motion.div>

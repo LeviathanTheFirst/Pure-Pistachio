@@ -59,7 +59,7 @@ export function PageHero({
           <Eyebrow variant="onDark" className="text-gold">
             {eyebrow}
           </Eyebrow>
-          <h1 className="mt-5 font-display text-hero font-bold leading-[0.98] text-white">
+          <h1 className="mt-5 font-display text-hero font-black uppercase tracking-title [font-variation-settings:var(--font-variation-title)] leading-[0.98] text-white">
             {title}
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lead text-cream-90">{description}</p>

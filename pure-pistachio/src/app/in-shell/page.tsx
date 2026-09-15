@@ -10,7 +10,7 @@ import { GradientDivider } from "@/components/ui/GradientDivider";
 
 const IN_SHELL_VARIETIES = [
   {
-    imageSrc: "/images/Product Page/Models/pistacho-jumbo-4.png",
+    imageSrc: "/images/Product Page/Models/pistacho-jumbo-4.webp",
     imageAlt: "Jumbo in-shell pistachio",
     varietyName: "Jumbo",
     grade: "U.S. Extra #1",
@@ -18,7 +18,7 @@ const IN_SHELL_VARIETIES = [
       "Our naturally open pistachios result in easy-to-open shells, revealing premium kernels inside. Selected for size and split rate, Jumbo-grade in-shell pistachios are ideal for retail snacking, foodservice, and bulk distribution.",
   },
   {
-    imageSrc: "/images/Product Page/Models/pistacho-redondo-1.png",
+    imageSrc: "/images/Product Page/Models/pistacho-redondo-1.webp",
     imageAlt: "Round in-shell pistachio",
     varietyName: "Round",
     grade: "U.S. Extra #1",
@@ -26,7 +26,7 @@ const IN_SHELL_VARIETIES = [
       "Round (Redondo) pistachios offer a classic shape with excellent natural split. Consistently graded for uniformity and quality, these are a staple for retail brands and private-label programs looking for reliable presentation.",
   },
   {
-    imageSrc: "/images/Product Page/Models/Akbari-3.png",
+    imageSrc: "/images/Product Page/Models/Akbari-3.webp",
     imageAlt: "Akbari in-shell pistachio",
     varietyName: "Akbari",
     grade: "U.S. Extra #1",

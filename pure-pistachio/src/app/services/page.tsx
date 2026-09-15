@@ -15,8 +15,14 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         video="/Videos/Services_Header.mp4"
-        title="From orchard to order — one supply chain"
-        description="Cracking, sorting, and packing as one seamless capability, tailored to your program. English names are primary; working terms like Shekan are shown for review."
+        title={
+          <>
+            From orchard to order
+            <br />
+            <span className="text-gold">one supply chain</span>
+          </>
+        }
+        description="Cracking, sorting, and packing as one seamless capability, tailored to your program."
       >
         <ButtonLink href="/contact?intent=service" variant="onDark" size="lg">
           Talk to us

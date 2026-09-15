@@ -24,13 +24,14 @@ export function ProductCta({ className }: { className?: string }) {
           volume, and packaging to your program.
         </Body>
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
-          <ButtonLink href="/contact?intent=sample" variant="onDark" size="lg">
+          <ButtonLink href="/contact?intent=sample" variant="onDark" size="lg" displayTitle>
             Request a Sample
           </ButtonLink>
           <ButtonLink
             href="/contact?intent=spec"
             variant="secondary-inverse"
             size="lg"
+            displayTitle
           >
             Request a Spec Sheet
           </ButtonLink>

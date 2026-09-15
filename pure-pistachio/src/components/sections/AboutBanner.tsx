@@ -20,7 +20,7 @@ export function AboutBanner() {
         <div className="flex flex-col items-start gap-8 py-[clamp(1.5rem,2vw+0.5rem,2.5rem)] sm:flex-row sm:items-center sm:gap-16">
           {/* Text block */}
           <Reveal className="flex-1">
-            <Eyebrow variant="default" className="mb-2">
+            <Eyebrow variant="default" className="mb-4">
               About Us
             </Eyebrow>
             <Heading as="h2" variant="default" className="mb-3 text-[clamp(1.75rem,2vw+1rem,3rem)] leading-[1.08]">

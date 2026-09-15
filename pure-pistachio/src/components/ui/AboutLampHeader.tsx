@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { LampContainer } from "@/components/ui/lamp";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ButtonLink } from "@/components/ui/Button";
@@ -28,12 +28,12 @@ export function AboutLampHeader() {
         <Eyebrow variant="gold">About</Eyebrow>
 
         <h1
-          className="mt-6 font-display font-bold leading-[1.04] text-5xl md:text-8xl"
+          className="mt-6 font-display font-black uppercase tracking-title [font-variation-settings:var(--font-variation-title)] leading-[1.04] text-5xl md:text-8xl"
           style={{
             color: "#f5f1e8",
           }}
         >
-          From orchard to your order
+          Why Pure Pistachios
         </h1>
 
         <p className="mt-8 max-w-3xl text-xl md:text-2xl" style={{ color: "#f5f1e8" }}>

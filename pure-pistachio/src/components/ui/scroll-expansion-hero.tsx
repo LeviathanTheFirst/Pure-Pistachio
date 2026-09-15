@@ -41,6 +41,9 @@ const ScrollExpandMedia = ({
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
+  const progressRef = useRef<number>(scrollProgress);
+  const expandedRef = useRef<boolean>(mediaFullyExpanded);
+  const touchStartRef = useRef<number>(touchStartY);
 
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
@@ -51,15 +54,27 @@ const ScrollExpandMedia = ({
   /* eslint-enable react-hooks/set-state-in-effect */
 
   useEffect(() => {
+    progressRef.current = scrollProgress;
+  }, [scrollProgress]);
+
+  useEffect(() => {
+    expandedRef.current = mediaFullyExpanded;
+  }, [mediaFullyExpanded]);
+
+  useEffect(() => {
+    touchStartRef.current = touchStartY;
+  }, [touchStartY]);
+
+  useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
+      if (expandedRef.current && e.deltaY < 0 && window.scrollY <= 5) {
         setMediaFullyExpanded(false);
         e.preventDefault();
-      } else if (!mediaFullyExpanded) {
+      } else if (!expandedRef.current) {
         e.preventDefault();
         const scrollDelta = e.deltaY * 0.001188;
         const newProgress = Math.min(
-          Math.max(scrollProgress + scrollDelta, 0),
+          Math.max(progressRef.current + scrollDelta, 0),
           1
         );
         setScrollProgress(newProgress);
@@ -78,20 +93,20 @@ const ScrollExpandMedia = ({
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (!touchStartY) return;
+      if (!touchStartRef.current) return;
 
       const touchY = e.touches[0].clientY;
-      const deltaY = touchStartY - touchY;
+      const deltaY = touchStartRef.current - touchY;
 
-      if (mediaFullyExpanded && deltaY < -20 && window.scrollY <= 5) {
+      if (expandedRef.current && deltaY < -20 && window.scrollY <= 5) {
         setMediaFullyExpanded(false);
         e.preventDefault();
-      } else if (!mediaFullyExpanded) {
+      } else if (!expandedRef.current) {
         e.preventDefault();
         const scrollFactor = deltaY < 0 ? 0.01056 : 0.0066;
         const scrollDelta = deltaY * scrollFactor;
         const newProgress = Math.min(
-          Math.max(scrollProgress + scrollDelta, 0),
+          Math.max(progressRef.current + scrollDelta, 0),
           1
         );
         setScrollProgress(newProgress);
@@ -112,7 +127,7 @@ const ScrollExpandMedia = ({
     };
 
     const handleScroll = (): void => {
-      if (!mediaFullyExpanded) {
+      if (!expandedRef.current) {
         window.scrollTo(0, 0);
       }
     };
@@ -149,7 +164,7 @@ const ScrollExpandMedia = ({
       );
       window.removeEventListener('touchend', handleTouchEnd as EventListener);
     };
-  }, [scrollProgress, mediaFullyExpanded, touchStartY]);
+  }, []);
 
   useEffect(() => {
     const checkIfMobile = (): void => {
@@ -303,18 +318,18 @@ const ScrollExpandMedia = ({
                 )}
 
               <div
-                className={`flex items-center justify-center text-center gap-4 w-full relative z-20 transition-none flex-col ${
+                className={`flex items-center justify-center text-center gap-4 w-full relative z-20 transition-none flex-row ${
                   textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
                 }`}
               >
                 <motion.h2
-                  className='font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream transition-none'
+                  className='hero-shimmer font-display text-[clamp(1.875rem,8vw+.5rem,12rem)] leading-[0.95] font-black uppercase tracking-title [font-variation-settings:var(--font-variation-title)] text-cream whitespace-nowrap transition-none'
                   style={{ transform: `translateX(-${textTranslateX}vw)` }}
                 >
                   {firstWord}
                 </motion.h2>
                 <motion.h2
-                  className='font-display text-4xl md:text-5xl lg:text-6xl font-bold text-center text-cream transition-none'
+                  className='hero-shimmer font-display text-[clamp(1.875rem,8vw+.5rem,12rem)] leading-[0.95] font-black uppercase tracking-title [font-variation-settings:var(--font-variation-title)] text-center text-cream whitespace-nowrap transition-none'
                   style={{ transform: `translateX(${textTranslateX}vw)` }}
                 >
                   {restOfTitle}

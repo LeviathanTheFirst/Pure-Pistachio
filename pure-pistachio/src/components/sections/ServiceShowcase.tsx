@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Heading } from "@/components/ui/Heading";
 import Link from "next/link";
 import { ArrowRight } from "@/components/ui/icons/ArrowRight";
 
@@ -8,7 +9,7 @@ const SERVICES = [
   {
     index: 1,
     title: "Cracking",
-    secondary: "Shekan",
+    secondary: "",
     eyebrow: "Precision shelling",
     image: "/images/Services Page/Cracking.webp",
     imageAlt: "Pistachio cracking process at Pure Pistachio facility",
@@ -44,7 +45,7 @@ const SERVICES = [
     title: "Packaging",
     secondary: "",
     eyebrow: "Retail & bulk formats",
-    image: "/images/Real Pics/7L5A0461.jpg",
+    image: "/images/Services Page/Packing.webp",
     imageAlt: "Pistachio packaging at Pure Pistachio facility",
     description:
       "From 50 kg bulk sacks to branded retail pouches, packaging is configured for your channel — with date coding, labelling, and palletisation handled in-house.",
@@ -75,8 +76,8 @@ export function ServiceShowcase() {
               aria-hidden
               className={`absolute inset-0 -z-10 ${
                 i % 2 === 0
-                  ? "bg-[linear-gradient(135deg,#f5f1e8_0%,#efe9dc_100%)]"
-                  : "bg-[linear-gradient(135deg,#faf8f3_0%,#f5f1e8_100%)]"
+                  ? "bg-[linear-gradient(135deg,#EAF2D3_0%,#dce8c9_100%)]"
+                  : "bg-[linear-gradient(135deg,#f3fbe0_0%,#EAF2D3_100%)]"
               }`}
             />
 
@@ -108,6 +109,8 @@ export function ServiceShowcase() {
                     <img
                       src={s.image}
                       alt={s.imageAlt}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   </div>
@@ -119,12 +122,15 @@ export function ServiceShowcase() {
                     <div className="relative">
                       <Eyebrow className="text-primary">{s.eyebrow}</Eyebrow>
 
-                      <h2 className="mt-3 font-display text-[clamp(2.4rem,4.2vw+0.6rem,4.2rem)] font-bold uppercase leading-[1.05] text-charcoal">
+                      <Heading
+                        as="h2"
+                        className="mt-3 text-[clamp(2.4rem,4.2vw+0.6rem,4.2rem)] leading-[1.05]"
+                      >
                         {s.title}
                         {s.secondary && (
                           <span className="ml-2 text-primary">({s.secondary})</span>
                         )}
-                      </h2>
+                      </Heading>
 
                       <p className="mt-4 max-w-lg text-[1.2rem] leading-relaxed text-charcoal-70">
                         {s.description}

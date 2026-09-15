@@ -39,7 +39,7 @@ export function ServicesBanner() {
             <Eyebrow variant="default" className="mb-3 text-charcoal/80">
               Services
             </Eyebrow>
-            <Heading as="h2" variant="default" className="mb-4 text-[clamp(2.375rem,3vw+1.25rem,4.5rem)]">
+            <Heading as="h2" variant="default" className="mb-8 text-[clamp(1.5rem,5vw,2rem)] lg:text-[clamp(1.875rem,7.25vw_-_2.7rem,3.5rem)]">
               One supply chain, end to end
             </Heading>
             <Body variant="body" className="mb-8 max-w-xl text-[clamp(1.0625rem,0.3vw+0.9375rem,1.375rem)] text-charcoal-80">

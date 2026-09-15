@@ -17,7 +17,7 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "font-display text-eyebrow font-normal uppercase tracking-eyebrow",
+        "block font-display text-eyebrow font-normal uppercase tracking-eyebrow",
         variant === "default" && "text-primary",
         variant === "onDark" && "text-cream",
         variant === "gold" && "text-gold",

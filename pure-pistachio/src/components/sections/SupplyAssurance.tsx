@@ -1,4 +1,4 @@
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -29,16 +29,17 @@ export function SupplyAssurance() {
   return (
     <Section className="relative flex min-h-dvh items-center pb-[clamp(2rem,4vw,4rem)]">
       <Container>
-        <div className="grid w-full items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <Reveal as="div" className="order-1 lg:order-none">
-            {/* PLACEHOLDER media: replace with photography of orchard or
-                processing facility, 4:5 or 3:4. */}
-            <PlaceholderImage
-              label="Orchard & facility — photo coming soon"
-              tone="green"
-              aspect="aspect-[4/5]"
-              className="mx-auto w-[85%] rounded-sm sm:w-[70%]"
-            />
+            <div className="mx-auto w-[85%] overflow-hidden rounded-sm sm:w-full">
+              <Image
+                src="/images/Home Page/Shipping_yard.webp"
+                alt="Shipping yard where orders are loaded and dispatched for global delivery"
+                width={2528}
+                height={1688}
+                className="aspect-[8/9] object-cover object-[65%_center]"
+              />
+            </div>
           </Reveal>
 
           <div className="order-2 lg:order-none lg:scale-[0.9] lg:origin-center">

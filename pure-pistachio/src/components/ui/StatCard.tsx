@@ -3,11 +3,16 @@ import { cn } from "@/lib/cn";
 type StatCardProps = {
   value: string;
   label: string;
+  tag?: string;
   note?: string;
   className?: string;
   /** Metric text size. Pass a smaller value in 4-across (or tighter) grids
    *  so the value stays on one line; defaults to the `text-metric` token. */
   metricClassName?: string;
+  /** Extra classes for the label line (defaults to small uppercase). */
+  labelClassName?: string;
+  /** Extra classes for the note line. */
+  noteClassName?: string;
 };
 
 /**
@@ -19,9 +24,12 @@ type StatCardProps = {
 export function StatCard({
   value,
   label,
+  tag,
   note,
   className,
   metricClassName,
+  labelClassName,
+  noteClassName,
 }: StatCardProps) {
   const cleanValue = value.replace(/\[TODO[^\]]*\]/g, "").trim();
   const todoMatch = value.match(/\[TODO[^\]]*\]/);
@@ -36,11 +44,21 @@ export function StatCard({
       >
         {cleanValue}
       </p>
-      <p className="mt-3 text-sm font-medium uppercase tracking-[0.14em] text-cream-80">
+      <p
+        className={cn(
+          "mt-3 text-sm font-medium uppercase tracking-[0.14em] text-cream-80",
+          labelClassName,
+        )}
+      >
         {label}
       </p>
+      {tag && (
+        <p className="mt-1.5 text-xs font-bold uppercase tracking-[0.12em] text-white">
+          {tag}
+        </p>
+      )}
       {note && (
-        <p className="mt-2.5 text-[0.75rem] leading-snug text-white-70">
+        <p className={cn("mt-2.5 text-[0.75rem] leading-snug text-white-70", noteClassName)}>
           {note}
         </p>
       )}

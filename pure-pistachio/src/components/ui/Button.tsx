@@ -26,6 +26,11 @@ const sizes: Record<Size, string> = {
   lg: "px-8 py-4 text-base",
 };
 
+/** Display-font title recipe — heavy, condensed, uppercase. Applied last so it
+ *  overrides variant-level font-weight and tracking via tailwind-merge. */
+const titleRecipe =
+  "font-black uppercase tracking-title [font-variation-settings:var(--font-variation-title)]";
+
 interface ButtonLinkProps {
   href: string;
   variant?: Variant;
@@ -33,6 +38,8 @@ interface ButtonLinkProps {
   className?: string;
   children: ReactNode;
   ariaLabel?: string;
+  /** Apply the display-font title recipe (heavy/uppercase/condensed). */
+  displayTitle?: boolean;
 }
 
 export function ButtonLink({
@@ -42,9 +49,10 @@ export function ButtonLink({
   className,
   children,
   ariaLabel,
+  displayTitle,
 }: ButtonLinkProps) {
   const isAnchor = href.startsWith("#");
-  const classes = cn(base, variants[variant], sizes[size], className);
+  const classes = cn(base, variants[variant], sizes[size], className, displayTitle && titleRecipe);
   const aria = ariaLabel ? { "aria-label": ariaLabel } : {};
 
   if (isAnchor) {
@@ -68,6 +76,8 @@ interface ButtonProps
   size?: Size;
   className?: string;
   children: ReactNode;
+  /** Apply the display-font title recipe (heavy/uppercase/condensed). */
+  displayTitle?: boolean;
 }
 
 export function Button({
@@ -77,6 +87,7 @@ export function Button({
   children,
   type = "button",
   disabled,
+  displayTitle,
   ...rest
 }: ButtonProps) {
   return (
@@ -91,6 +102,7 @@ export function Button({
         disabled &&
           "cursor-not-allowed opacity-50 hover:bg-inherit hover:text-inherit active:bg-inherit",
         className,
+        displayTitle && titleRecipe,
       )}
       {...rest}
     >

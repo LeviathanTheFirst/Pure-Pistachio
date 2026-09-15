@@ -29,6 +29,10 @@ export interface FloatingHeroProps {
   images: FloatingImageProps[];
   actions?: React.ReactNode;
   className?: string;
+  /** Extra utility classes applied to the <h1> (e.g. font weight or a text-transparent image clip). */
+  titleClassName?: string;
+  /** Inline style applied to the <h1> (e.g. background-image for a clip-text effect). */
+  titleStyle?: React.CSSProperties;
 }
 
 /**
@@ -83,18 +87,20 @@ export function FloatingHero({
   images,
   actions,
   className,
+  titleClassName,
+  titleStyle,
 }: FloatingHeroProps) {
   return (
     <section
       className={cn(
-        "relative isolate flex min-h-svh items-center justify-center overflow-hidden bg-cream py-20",
+        "relative isolate flex min-h-svh items-center justify-center overflow-x-clip bg-cream py-20",
         className
       )}
     >
       {/* Soft warm illumination behind the copy. */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 bg-[radial-gradient(120%_120%_at_50%_25%,#fdfcf9_0%,#f5f1e8_55%,#ece6d8_100%)]"
+        className="absolute inset-0 -z-20 bg-[radial-gradient(100%_100%_at_50%_30%,#f0f8dc_0%,#EAF2D3_55%,#dce8c9_100%)]"
       />
       <div
         aria-hidden
@@ -121,13 +127,28 @@ export function FloatingHero({
       </div>
 
       {/* Text content */}
-      <div className="relative z-20 mx-auto w-full max-w-[88rem] px-5 text-center sm:px-10 lg:px-20">
-        <div className="mx-auto max-w-3xl">
+      <div className="relative z-20 mx-auto w-full max-w-[100rem] px-5 text-center sm:px-10 lg:px-20">
+        <div className="mx-auto max-w-3xl pb-6">
           {eyebrow && <div className="text-center">{eyebrow}</div>}
-          <h1 className="mt-5 font-display text-hero font-bold leading-[0.98] text-charcoal">
-            {title}
-          </h1>
-          <p className="mt-6 text-lead leading-relaxed text-charcoal/80">
+        </div>
+        <h1
+          className={cn(
+            "-mx-5 w-auto text-center font-display font-bold leading-[0.9] text-black sm:-mx-10 lg:-mx-20",
+            titleClassName,
+          )}
+          style={{
+            fontSize: "var(--text-hero)",
+            ...titleStyle,
+          }}
+        >
+          {title.split(" ").map((line, i) => (
+            <span key={i} className="block">
+              {line}
+            </span>
+          ))}
+        </h1>
+        <div className="mx-auto max-w-3xl pt-6">
+          <p className="font-display text-eyebrow font-normal uppercase tracking-eyebrow text-primary">
             {description}
           </p>
           {actions && (
@@ -139,9 +160,4 @@ export function FloatingHero({
       </div>
     </section>
   );
-}
-
-// Backwards-compatible alias so the demo / existing references keep working.
-export function FloatingFoodHero(props: FloatingHeroProps) {
-  return <FloatingHero {...props} />;
 }

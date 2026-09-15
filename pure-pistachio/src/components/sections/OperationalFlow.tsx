@@ -15,12 +15,12 @@ import {
 } from "@/components/ui/icons/LineIcons";
 
 const PIPELINE = [
-  { label: "Farming", icon: <LeafIcon className="h-6 w-6" />, desc: "[TODO: orchard/growing]" },
-  { label: "Initial Processing", icon: <NutIcon className="h-6 w-6" />, desc: "[TODO: harvest handling]" },
-  { label: "Second Stage Processing", icon: <GearIcon className="h-6 w-6" />, desc: "[TODO: further processing]" },
-  { label: "Packing", icon: <BoxIcon className="h-6 w-6" />, desc: "[TODO: packing/sizing]" },
-  { label: "Storage", icon: <StorageIcon className="h-6 w-6" />, desc: "[TODO: cold storage]" },
-  { label: "Distribution", icon: <TruckIcon className="h-6 w-6" />, desc: "[TODO: outbound logistics]" },
+  { label: "Farming", icon: <LeafIcon className="h-6 w-6" />, desc: "Grown in carefully tended orchards." },
+  { label: "Initial Processing", icon: <NutIcon className="h-6 w-6" />, desc: "Cleaned, hulled, and sorted." },
+  { label: "Second Stage Processing", icon: <GearIcon className="h-6 w-6" />, desc: "Dried and graded to standard." },
+  { label: "Packing", icon: <BoxIcon className="h-6 w-6" />, desc: "Sized and packed to order." },
+  { label: "Storage", icon: <StorageIcon className="h-6 w-6" />, desc: "Stored cold to preserve freshness." },
+  { label: "Distribution", icon: <TruckIcon className="h-6 w-6" />, desc: "Delivered on time, every time." },
 ] as const;
 
 /**

@@ -29,19 +29,19 @@ export function ProductVarieties() {
 
       <div
         className="absolute top-0 left-0 right-0 h-[18%] md:h-[12%]"
-        style={{ backgroundColor: '#FAF6E9' }}
+        style={{ backgroundColor: '#EAF2D3' }}
       />
 
       {/* Middle cream section - shifted up 8% */}
       <div
         className="absolute top-[18%] md:top-[12%] left-0 right-0 h-[40%] md:h-[35%]"
-        style={{ backgroundColor: '#FAF6E9' }}
+        style={{ backgroundColor: '#EAF2D3' }}
       />
 
       {/* Bottom green section */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[42%] md:h-[53%]"
-        style={{ backgroundColor: '#DCE3C4' }}
+        style={{ backgroundColor: '#cfe0aa' }}
       />
 
       <Container className="relative z-10 flex flex-1 flex-col justify-between">
@@ -50,10 +50,10 @@ export function ProductVarieties() {
             as="h2"
             className="mt-4 font-bold text-black text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.05]"
           >
-            Origin &amp; cultivar
+            Products
           </Heading>
           <p className="mt-4 text-lg text-charcoal max-w-2xl">
-            Discover our premium pistachio offerings available in two formats: raw kernels for processing and in-shell for direct consumption.
+            Discover our premium pistachio offerings
           </p>
         </Reveal>
 
@@ -76,12 +76,12 @@ export function ProductVarieties() {
                   className="h-[140px] sm:h-[13rem] md:h-[23.8rem] w-auto max-w-full object-contain drop-shadow-lg transition-transform duration-300"
                 />
                 <span className="relative z-10 mt-2 md:mt-1 inline-block px-2 text-center">
-                  <span className="relative z-10 block font-display text-3xl md:text-5xl font-bold text-black tracking-tight">
+                  <span className="relative z-10 block font-display text-3xl md:text-5xl font-black uppercase tracking-title [font-variation-settings:var(--font-variation-title)] text-black">
                     {item.title}
                   </span>
                   <span
                     aria-hidden="true"
-                    className="absolute left-1/2 -translate-x-1/2 -bottom-1 block h-4 w-0 -rotate-2 bg-[#7a9e4e] transition-all duration-300 ease-out group-hover:w-[120%]"
+                    className="absolute left-1/2 -translate-x-1/2 -bottom-1 block h-4 w-0 -rotate-2 bg-[#537A20] transition-all duration-300 ease-out group-hover:w-[120%]"
                   />
                 </span>
               </a>

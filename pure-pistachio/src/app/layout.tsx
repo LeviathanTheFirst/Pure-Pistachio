@@ -1,25 +1,23 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 
-const playfairDisplay = localFont({
-  src: [
-    { path: "./fonts/playfair-display-400.woff2", weight: "400" },
-    { path: "./fonts/playfair-display-500.woff2", weight: "500" },
-    { path: "./fonts/playfair-display-600.woff2", weight: "600" },
-    { path: "./fonts/playfair-display-700.woff2", weight: "700" },
-  ],
-  display: "swap",
-  variable: "--font-playfair-display",
-});
-
 const inter = localFont({
   src: "./fonts/inter-var.woff2",
   display: "swap",
   variable: "--font-inter",
+});
+
+const nunitoSans = Nunito_Sans({
+  weight: "variable",
+  axes: ["YTLC", "wdth"],
+  subsets: ["latin"],
+  variable: "--font-nunito-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -41,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${inter.variable} h-full`}
+      className={`${inter.variable} ${nunitoSans.variable} h-full`}
     >
       <body className="flex min-h-full flex-col">
         <ScrollToTop />

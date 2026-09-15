@@ -7,7 +7,14 @@ import { ChevronDownIcon } from "@/components/ui/icons/LineIcons";
 
 type Errors = Partial<Record<FieldName, string>>;
 
-type FieldName = "name" | "email" | "company" | "country" | "interest" | "message";
+type FieldName =
+  | "name"
+  | "email"
+  | "company"
+  | "country"
+  | "interest"
+  | "message"
+  | "website";
 
 /**
  * Interest options mirror the `?intent=` query used across the site's CTAs
@@ -36,6 +43,7 @@ const LABELS: Record<FieldName, string> = {
   country: "Country / region",
   interest: "I'm interested in",
   message: "Message",
+  website: "", // honeypot field — never rendered as a Field.
 };
 
 function validate(values: Record<FieldName, string>): Errors {
@@ -87,9 +95,13 @@ export function InquiryForm() {
     country: "",
     interest: "",
     message: "",
+    website: "",
   });
   const [errors, setErrors] = useState<Errors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
+    "idle",
+  );
+  const [serverError, setServerError] = useState<string | null>(null);
 
   // Honor /contact?intent=… deep links from the site's CTAs. Read client-side
   // after mount so nothing depends on server search params (static export).
@@ -107,7 +119,7 @@ export function InquiryForm() {
     if (errors[field]) setErrors((e) => ({ ...e, [field]: undefined }));
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const next = validate(values);
     if (Object.keys(next).some((k) => next[k as FieldName])) {
@@ -115,10 +127,40 @@ export function InquiryForm() {
       return;
     }
     setErrors({});
-    setSubmitted(true);
+    setServerError(null);
+    setStatus("sending");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      const data = (await res.json()) as {
+        ok?: boolean;
+        errors?: Errors;
+        message?: string;
+      };
+
+      if (!res.ok || !data.ok) {
+        if (data.errors) {
+          setErrors(data.errors);
+          setStatus("idle");
+        } else {
+          setServerError(data.message ?? "Something went wrong. Please try again.");
+          setStatus("error");
+        }
+        return;
+      }
+
+      setStatus("success");
+    } catch {
+      setServerError("Network error — please check your connection and try again.");
+      setStatus("error");
+    }
   };
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div
         role="status"
@@ -131,7 +173,24 @@ export function InquiryForm() {
           We&apos;ll get back to you within one business day with next steps —
           specs, samples, or a quote.
         </p>
-        <Button variant="secondary" className="mt-5" onClick={() => setSubmitted(false)}>
+        <Button
+          variant="secondary"
+          className="mt-5"
+          onClick={() => {
+            setStatus("idle");
+            setServerError(null);
+            setErrors({});
+            setValues({
+              name: "",
+              email: "",
+              company: "",
+              country: "",
+              interest: "",
+              message: "",
+              website: "",
+            });
+          }}
+        >
           Submit another inquiry
         </Button>
       </div>
@@ -140,6 +199,36 @@ export function InquiryForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-5">
+      {status === "error" && serverError && (
+        <div
+          role="alert"
+          className="rounded-sm border border-primary/30 bg-primary-soft p-4 text-sm text-primary"
+        >
+          {serverError}
+          <button
+            type="button"
+            onClick={() => {
+              setServerError(null);
+              setStatus("idle");
+            }}
+            className="ml-3 font-semibold underline underline-offset-2"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
+      {/* Honeypot — hidden from humans; bots auto-fill it. The API silently
+          ignores submissions where it is populated. */}
+      <div className="absolute -left-[9999px] top-0" aria-hidden="true">
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={values.website ?? ""}
+          onChange={(e) => set("website", e.target.value)}
+        />
+      </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="name" label={LABELS.name} error={errors.name}>
           <input
@@ -237,8 +326,13 @@ export function InquiryForm() {
       </Field>
 
       <div className="pt-2">
-        <Button type="submit" size="lg" className="w-full sm:w-auto">
-          Submit inquiry
+        <Button
+          type="submit"
+          size="lg"
+          className="w-full sm:w-auto"
+          disabled={status === "sending"}
+        >
+          {status === "sending" ? "Sending…" : "Submit inquiry"}
         </Button>
       </div>
     </form>

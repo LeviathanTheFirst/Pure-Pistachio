@@ -27,13 +27,17 @@ export function ProductCard({
           <img
             src={imageSrc}
             alt={imageAlt}
+            width={1600}
+            height={1067}
+            loading="lazy"
+            decoding="async"
             className="aspect-[3/2] w-full object-cover"
           />
         </div>
 
         {/* Row 1–2 right: headline + description + CTA */}
         <div className="flex flex-col items-start md:row-span-2 md:pl-[20%]">
-          <h2 className="relative font-display text-[clamp(3.5rem,10vw,4.5rem)] font-bold leading-[1.05] text-charcoal">
+          <h2 className="relative font-display text-[clamp(3.5rem,10vw,4.5rem)] font-black uppercase tracking-title [font-variation-settings:var(--font-variation-title)] leading-[1.05] text-charcoal">
             <span className="relative z-10">{varietyName}</span>
             <span
               aria-hidden="true"
@@ -43,7 +47,7 @@ export function ProductCard({
           <p className="mt-3 max-w-lg text-xl leading-snug text-charcoal md:mt-8 md:leading-relaxed md:text-2xl">
             {description}
           </p>
-          <ButtonLink href="/contact/" variant="primary" size="md" className="mt-3 md:mt-8">
+          <ButtonLink href="/contact/" variant="primary" size="md" className="mt-3 md:mt-8" displayTitle>
             Contact Sales
           </ButtonLink>
         </div>

@@ -10,56 +10,49 @@ const FAMILIES = [
   {
     eyebrow: "Kernels",
     title: "Kernels",
-    description:
-      "Whole, split, and diced kernels for snacking, bakery, and confectionery programs.",
     href: "/products?family=kernels",
     tone: "green",
-    imageAlt: "Pistachio kernels — placeholder image to be replaced",
+    imageSrc: "/images/Home Page/Kernel_Families.webp",
+    imageAlt: "Pistachio kernels",
   },
   {
     eyebrow: "In-Shell",
     title: "In-Shell",
-    description:
-      "Roasted and raw in-shell pistachios, consistent count and size for retail and foodservice.",
     href: "/products?family=in-shell",
     tone: "deep",
-    imageAlt: "In-shell pistachios — placeholder image to be replaced",
+    imageSrc: "/images/Home Page/InShell_Families.webp",
+    imageAlt: "In-shell pistachios",
   },
 ] as const;
 
 /**
- * Product family cards — image-led with bottom-aligned text over a controlled
- * dark overlay. All media is placeholder (see Placeholder/media notes).
+ * Product family cards — image-led with bottom-aligned name + link over a
+ * controlled dark overlay. All media is placeholder (see Placeholder/media notes).
  */
 export function ProductFamily() {
   return (
-    <Section className="flex min-h-dvh flex-col justify-center bg-cream py-[clamp(2rem,4vw,4rem)]">
+    <Section className="flex min-h-dvh flex-col justify-center bg-cream py-[clamp(1rem,2vw,2rem)]">
       <Container>
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-6xl text-center">
           <Eyebrow>Product families</Eyebrow>
           <Heading
             as="h2"
-            className="mt-4 font-bold text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.05]"
+            className="mt-3 font-bold text-[clamp(1.5rem,4vw+0.75rem,4.5rem)] leading-[1.05] [text-wrap:balance]"
           >
             Two families, endless ways to supply
           </Heading>
-          <Body variant="lead" className="mt-5">
-            Every format Pure Pistachio grows, processes, or packs — sized to
-            your line, your menu, or your shelf.
-          </Body>
         </Reveal>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:mx-auto lg:grid-cols-2 lg:max-w-3xl">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:mx-auto lg:grid-cols-2 lg:gap-8 lg:max-w-[51rem]">
           {FAMILIES.map((family, i) => (
             <Reveal key={family.title} delay={0.06 * i} className="h-full">
               <ProductCard
                 title={family.title}
-                eyebrow={family.eyebrow}
-                description={family.description}
                 href={family.href}
+                imageSrc={family.imageSrc}
                 imageAlt={family.imageAlt}
                 imageTone={family.tone}
-                imageAspect="aspect-[4/3]"
+                imageAspect="aspect-[16/17]"
                 className="h-full"
               />
             </Reveal>

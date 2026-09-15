@@ -57,11 +57,12 @@ export default function ContactPage() {
 
       <Section className="bg-white">
         <Container>
-          <div className="grid items-start gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
+          <div className="grid items-start gap-14 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
             <ContactDetail />
 
             <Reveal delay={0.1}>
-              <h2 className="font-display text-h3 font-semibold uppercase tracking-[0.06em] text-charcoal">
+              <Eyebrow>Send a message</Eyebrow>
+              <h2 className="mt-4 font-display text-h3 font-black uppercase tracking-title [font-variation-settings:var(--font-variation-title)] text-charcoal">
                 Tell us what you need
               </h2>
               <p className="mt-3 text-lead text-charcoal-80">
@@ -86,8 +87,8 @@ export default function ContactPage() {
                 Find our head office
               </Heading>
               <Body variant="lead" className="mt-4 max-w-md">
-                We supply out of California&apos;s Central Valley — near the
-                orchards and the port.
+                We supply out of Rafsanjan, in Iran&apos;s Kerman
+                province — the heart of the country&apos;s pistachio belt.
               </Body>
 
               <div className="mt-8 flex items-start gap-4 rounded-sm border border-stone bg-white p-6">
@@ -113,7 +114,7 @@ export default function ContactPage() {
               <PlaceholderImage
                 tone="stone"
                 aspect="aspect-[4/3]"
-                label="Map — 555 Orchard Way, Fresno, CA"
+                label="Map — Kerman, Rafsanjan, Iran"
                 className="w-full rounded-sm"
               />
             </Reveal>

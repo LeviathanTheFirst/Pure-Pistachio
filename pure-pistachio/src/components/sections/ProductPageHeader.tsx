@@ -46,7 +46,7 @@ export function ProductPageHeader({
         </Eyebrow>
         <Heading
           as="h1"
-          className="mt-3 max-w-4xl font-bold text-cream text-[clamp(2rem,6vw,4.5rem)] leading-[1.05]"
+          className="mt-3 max-w-4xl font-black uppercase tracking-title [font-variation-settings:var(--font-variation-title)] text-cream text-[clamp(2rem,6vw,4.5rem)] leading-[1.05]"
         >
           {title}
         </Heading>

@@ -21,8 +21,16 @@ export function Heading({
     as === "h1"
       ? "text-hero font-display font-bold leading-[0.98]"
       : as === "h2"
-        ? "text-h2 font-display font-bold leading-[1.04]"
-        : "text-h3 font-display font-bold leading-[1.2]";
+        ? "text-h2 font-display leading-[1.04]"
+        : "text-h3 font-display leading-[1.2]";
+
+  // Section-title recipe (h2+): heavy, condensed, uppercase. Applied LAST in
+  // cn() so tailwind-merge gives it precedence over any font-bold a caller
+  // passes via className (the caller's className is merged before this).
+  const titleRecipe =
+    as === "h1"
+      ? ""
+      : "font-black uppercase tracking-title [font-variation-settings:var(--font-variation-title)]";
 
   return (
     <Tag
@@ -31,6 +39,7 @@ export function Heading({
         "font-display",
         variant === "default" ? "text-charcoal" : "text-white",
         className,
+        titleRecipe,
       )}
     >
       {children}

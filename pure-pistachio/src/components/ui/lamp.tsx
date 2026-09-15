@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { cn } from "@/lib/cn";
 
 /**
@@ -15,7 +15,7 @@ import { cn } from "@/lib/cn";
  *   --color-stone       #d9d5cb   muted text gradient stop
  *
  * Animation: conic cones expand into view, light bloom scales,
- * gold filament stretches -- all driven by framer-motion whileInView.
+ * gold filament stretches -- all driven by motion whileInView.
  */
 
 /* ---------- colour constants (JS, for inline styles) ---------- */

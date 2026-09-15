@@ -20,8 +20,8 @@ export function PlaceholderImage({
 } & Omit<ComponentPropsWithoutRef<"div">, "className" | "children">) {
   const tones: Record<string, string> = {
     green:
-      "bg-gradient-to-br from-primary via-primary to-[#2a4523]",
-    deep: "bg-gradient-to-br from-[#2a4523] to-primary",
+      "bg-gradient-to-br from-primary via-primary to-[#3E5C18]",
+    deep: "bg-gradient-to-br from-[#3E5C18] to-primary",
     gold: "bg-gradient-to-br from-gold to-[#a3770a]",
     stone: "bg-gradient-to-br from-stone to-[#b9b4a8]",
     charcoal: "bg-gradient-to-br from-charcoal to-[#3a3d39]",

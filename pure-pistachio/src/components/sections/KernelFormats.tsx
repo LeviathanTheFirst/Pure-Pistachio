@@ -7,40 +7,41 @@ import {
   type CarouselItem,
 } from "@/components/ui/3-d-coverflow-carousel";
 
-const OPERATIONS: CarouselItem[] = [
+const SAMPLES: CarouselItem[] = [
   {
-    titleLine1: "Cracking",
-    img: "/images/Services Page/Cracking.webp",
+    titleLine1: "Sample 1",
+    img: "/images/Product Page/1.webp",
     photoOnly: true,
   },
   {
-    titleLine1: "Sorting",
-    img: "/images/Services Page/Sorting.webp",
+    titleLine1: "Sample 2",
+    img: "/images/Product Page/2.webp",
     photoOnly: true,
   },
   {
-    titleLine1: "Facility",
-    img: "/images/Real Pics/7L5A0418.jpg",
+    titleLine1: "Sample 3",
+    img: "/images/Product Page/3.webp",
     photoOnly: true,
   },
   {
-    titleLine1: "Quality Control",
-    img: "/images/Real Pics/7L5A0437.jpg",
+    titleLine1: "Sample 4",
+    img: "/images/Product Page/4.webp",
+    imgScale: 1.3,
     photoOnly: true,
   },
   {
-    titleLine1: "Packaging",
-    img: "/images/Real Pics/7L5A0439.jpg",
+    titleLine1: "Sample 5",
+    img: "/images/Product Page/5.webp",
     photoOnly: true,
   },
   {
-    titleLine1: "Processing",
-    img: "/images/Real Pics/7L5A0455.jpg",
+    titleLine1: "Sample 6",
+    img: "/images/Product Page/6.webp",
     photoOnly: true,
   },
   {
-    titleLine1: "Operations",
-    img: "/images/Real Pics/7L5A0459.jpg",
+    titleLine1: "Sample 7",
+    img: "/images/Product Page/7.webp",
     photoOnly: true,
   },
 ];
@@ -60,12 +61,12 @@ export function KernelFormats() {
             as="h2"
             className="mt-1 font-bold text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.05]"
           >
-            Our operations
+            Latest Samples
           </Heading>
         </Reveal>
       </Container>
 
-      <CoverFlowCarousel items={OPERATIONS} autoplay autoplayDelay={5000} />
+      <CoverFlowCarousel items={SAMPLES} autoplay autoplayDelay={5000} mobileScale={0.7} />
     </Section>
   );
 }
