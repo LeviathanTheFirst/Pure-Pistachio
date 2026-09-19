@@ -21,6 +21,7 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dastchindane.com"),
   title: {
     default: "Pure Pistachio — Pistachios, supplied at every scale",
     template: "%s | Pure Pistachio",
@@ -32,6 +33,14 @@ export const metadata: Metadata = {
     description:
       "Pistachios, supplied at every scale. Sourcing, processing, and formats for any customer size.",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Pure Pistachio — Premium pistachios from Rafsanjan, Iran",
+      },
+    ],
   },
 };
 
