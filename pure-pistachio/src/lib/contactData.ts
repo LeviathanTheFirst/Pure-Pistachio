@@ -5,11 +5,11 @@
 export const CONTACT_DATA = {
   email: "info@purepistachio.co",
   emailHref: "mailto:info@purepistachio.co",
-  phoneDisplay: "",
-  phoneHref: "",
-  whatsappDisplay: "+98 904 391 9015",
+  phoneDisplay: "+989043919015",
+  phoneHref: "tel:+989043919015",
+  whatsappDisplay: "+989043919015",
   whatsappHref: "https://wa.me/989043919015",
-  address: ["Kerman", "Rafsanjan", "Iran"],
+  address: ["Iran", "Kerman", "Rafsanjan"],
   hours: "Mon–Fri, 09:00–17:00",
   responseLine: "Within one business day — usually sooner.",
 } as const;

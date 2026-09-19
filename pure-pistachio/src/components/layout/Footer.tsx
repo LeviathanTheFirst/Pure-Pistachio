@@ -60,12 +60,11 @@ export function Footer() {
                 </span>
               ))}
             </address>
-            <a
-              href={CONTACT_DATA.phoneHref}
-              className="mt-3 inline-block text-[0.9375rem] text-cream-80 hover:text-white"
-            >
-              {CONTACT_DATA.phoneDisplay}
-            </a>
+            {CONTACT_DATA.whatsappDisplay && (
+              <p className="mt-3 text-[0.9375rem] text-cream-80">
+                Whatsapp: {CONTACT_DATA.whatsappDisplay}
+              </p>
+            )}
           </div>
         </div>
 

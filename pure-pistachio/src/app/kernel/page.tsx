@@ -13,16 +13,14 @@ const KERNEL_PRODUCTS = [
     imageSrc: "/images/Product Page/Kernel Models/regular-kernel.webp",
     imageAlt: "Regular pistachio kernels",
     varietyName: "Regular",
-    grade: "U.S. Extra #1",
-    description:
+        description:
       "Naturally open pistachios deliver easy-to-crack shells and full kernels inside. Graded for uniform size and consistent nutmeat quality, Regular kernels are the go-to choice for roasting, snacking lines, and wholesale programs.",
   },
   {
     imageSrc: "/images/Product Page/Kernel Models/green-kernel-768x512.webp",
     imageAlt: "Green pistachio kernels",
     varietyName: "Green",
-    grade: "U.S. Extra #1",
-    description:
+        description:
       "Vibrant green kernels prized for their bold color and rich flavor — a signature grade for confectionery, ice cream, pastry, and fine patisserie programs where appearance and taste matter equally.",
   },
 ];
@@ -30,7 +28,7 @@ const KERNEL_PRODUCTS = [
 export const metadata: Metadata = {
   title: "Kernel",
   description:
-    "Pure Pistachio's kernel products — Regular and Green, available in U.S. Extra #1 grade.",
+    "Pure Pistachio's kernel products — Regular and Green.",
 };
 
 export default function KernelPage() {

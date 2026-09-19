@@ -93,8 +93,9 @@ export function OperationalFlow() {
                 Lab — quality control
               </p>
               <p className="mt-1 text-[0.9375rem] leading-relaxed text-charcoal-70">
-                Runs alongside every stage. [TODO: describe lab/QC role — sample
-                testing, grade confirmation, documentation]
+                Every batch is tested in-house for moisture, aflatoxin, and
+                grade conformity. Results are documented and shared with
+                buyers on request.
               </p>
             </div>
           </div>

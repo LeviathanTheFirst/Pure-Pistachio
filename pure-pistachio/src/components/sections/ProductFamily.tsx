@@ -10,7 +10,7 @@ const FAMILIES = [
   {
     eyebrow: "Kernels",
     title: "Kernels",
-    href: "/products?family=kernels",
+    href: "/kernel",
     tone: "green",
     imageSrc: "/images/Home Page/Kernel_Families.webp",
     imageAlt: "Pistachio kernels",
@@ -18,7 +18,7 @@ const FAMILIES = [
   {
     eyebrow: "In-Shell",
     title: "In-Shell",
-    href: "/products?family=in-shell",
+    href: "/in-shell",
     tone: "deep",
     imageSrc: "/images/Home Page/InShell_Families.webp",
     imageAlt: "In-shell pistachios",

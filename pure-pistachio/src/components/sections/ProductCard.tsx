@@ -5,7 +5,6 @@ type ProductCardProps = {
   imageSrc: string;
   imageAlt: string;
   varietyName: string;
-  grade: string;
   otherGradesNote?: string;
   description: string;
 };
@@ -14,7 +13,6 @@ export function ProductCard({
   imageSrc,
   imageAlt,
   varietyName,
-  grade,
   otherGradesNote = "(Other Grades Available)",
   description,
 }: ProductCardProps) {
@@ -59,9 +57,6 @@ export function ProductCard({
             Grade
           </p>
           <div className="mt-1.5 h-px w-full bg-stone" />
-          <p className="mt-2 font-display text-2xl font-bold text-charcoal">
-            {grade}
-          </p>
           <p className="mt-0.5 text-sm text-charcoal-70">{otherGradesNote}</p>
         </div>
       </div>

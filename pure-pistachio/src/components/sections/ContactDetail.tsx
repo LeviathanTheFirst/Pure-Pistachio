@@ -24,12 +24,16 @@ const METHODS: {
     href: CONTACT_DATA.emailHref,
     icon: <MailIcon className="h-5 w-5" />,
   },
-  {
-    label: "Phone",
-    value: CONTACT_DATA.phoneDisplay,
-    href: CONTACT_DATA.phoneHref,
-    icon: <PhoneIcon className="h-5 w-5" />,
-  },
+  ...(CONTACT_DATA.phoneDisplay
+    ? [
+        {
+          label: "Phone",
+          value: CONTACT_DATA.phoneDisplay,
+          href: CONTACT_DATA.phoneHref,
+          icon: <PhoneIcon className="h-5 w-5" />,
+        },
+      ]
+    : []),
   {
     label: "WhatsApp",
     value: CONTACT_DATA.whatsappDisplay,

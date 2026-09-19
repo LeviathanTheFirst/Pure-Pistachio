@@ -8,7 +8,6 @@ import { Body } from "@/components/ui/Body";
 import { Reveal } from "@/components/ui/Reveal";
 import { InquiryForm } from "@/components/ui/InquiryForm";
 import { ContactDetail } from "@/components/sections/ContactDetail";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import {
   ClockIcon,
   MapPinIcon,
@@ -83,18 +82,24 @@ export default function ContactPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <Reveal>
               <Eyebrow>Office &amp; map</Eyebrow>
-              <Heading as="h2" className="mt-4 font-bold leading-[1.05]">
+              <Heading
+                as="h2"
+                className="mt-4 font-bold text-[clamp(2.25rem,4vw+1rem,4.5rem)] leading-[1.05]"
+              >
                 Find our head office
               </Heading>
-              <Body variant="lead" className="mt-4 max-w-md">
+              <Body
+                variant="lead"
+                className="mt-5 max-w-md text-[clamp(1.25rem,0.8vw+1rem,1.5625rem)]"
+              >
                 We supply out of Rafsanjan, in Iran&apos;s Kerman
                 province — the heart of the country&apos;s pistachio belt.
               </Body>
 
               <div className="mt-8 flex items-start gap-4 rounded-sm border border-stone bg-white p-6">
-                <MapPinIcon className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                <MapPinIcon className="mt-1 h-6 w-6 shrink-0 text-primary" />
                 <div>
-                  <address className="text-[0.9375rem] not-italic leading-relaxed text-charcoal">
+                  <address className="text-[1.125rem] not-italic leading-relaxed text-charcoal">
                     {CONTACT_DATA.address.map((line) => (
                       <span key={line}>
                         {line}
@@ -102,8 +107,8 @@ export default function ContactPage() {
                       </span>
                     ))}
                   </address>
-                  <p className="mt-2 flex items-center gap-2 text-[0.9375rem] text-charcoal-70">
-                    <ClockIcon className="h-4 w-4 text-primary" />
+                  <p className="mt-2 flex items-center gap-2 text-[1.125rem] text-charcoal-70">
+                    <ClockIcon className="h-5 w-5 text-primary" />
                     {CONTACT_DATA.hours}
                   </p>
                 </div>
@@ -111,12 +116,18 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <PlaceholderImage
-                tone="stone"
-                aspect="aspect-[4/3]"
-                label="Map — Kerman, Rafsanjan, Iran"
-                className="w-full rounded-sm"
-              />
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-stone">
+                <iframe
+                  src="https://www.google.com/maps?q=30.39833,55.99194&z=12&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, position: "absolute", inset: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Map — Rafsanjan, Kerman, Iran"
+                />
+              </div>
             </Reveal>
           </div>
 
@@ -126,7 +137,7 @@ export default function ContactPage() {
                 <li key={p.title} className="flex items-start gap-3">
                   <span
                     aria-hidden
-                    className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border border-stone bg-white text-primary"
+                    className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border border-stone bg-white text-primary"
                   >
                     {p.icon}
                   </span>
@@ -134,7 +145,7 @@ export default function ContactPage() {
                     <p className="font-display text-sm font-semibold uppercase tracking-[0.12em] text-charcoal">
                       {p.title}
                     </p>
-                    <p className="mt-1 text-[0.9375rem] text-charcoal-70">
+                    <p className="mt-1 text-body text-charcoal-70">
                       {p.body}
                     </p>
                   </div>

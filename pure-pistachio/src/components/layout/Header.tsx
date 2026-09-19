@@ -73,7 +73,7 @@ export function Header() {
           aria-label="Pure Pistachio home"
           className="absolute left-4 top-1/2 -translate-y-1/2"
         >
-          <Logo linked={false} onDark={logoDark} />
+          <Logo linked={false} onDark={logoDark} className="h-14" />
         </Link>
 
         <div className="relative mx-auto max-w-[88rem] px-10 py-8">
@@ -143,7 +143,7 @@ export function Header() {
               href="/"
               aria-label="Pure Pistachio home"
             >
-              <Logo linked={false} />
+              <Logo linked={false} className="h-12" />
             </Link>
             <button
               type="button"
