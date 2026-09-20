@@ -12,33 +12,33 @@ export function Footer() {
   return (
     <footer data-dark className="bg-primary text-cream">
       <div className="mx-auto flex min-h-[44dvh] w-full max-w-[88rem] flex-col px-5 py-10 sm:px-10 md:py-12 lg:px-20">
-        <div className="grid flex-1 content-center gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        {/* Main columns */}
+        <div className="grid flex-1 gap-12 md:grid-cols-3">
           {/* Brand */}
           <div>
             <Logo onDark />
             <p className="mt-5 max-w-sm text-[0.9375rem] leading-relaxed text-cream-80">
-              Pure Pistachio supplies premium pistachios to buyers of every
-              size — sourcing, processing, formats, and volume under one roof.
+              Pure Pistachio supplies premium pistachios to buyers of every size — sourcing, processing, formats, and volume under one roof.
             </p>
             <a
               href={CONTACT_DATA.emailHref}
-              className="mt-6 inline-block font-display text-sm font-semibold uppercase tracking-[0.12em] text-gold hover:text-white"
+              className="mt-6 inline-block font-display text-sm font-semibold uppercase tracking-[0.12em] text-gold hover:text-white focus:outline-none focus:ring-2 focus:ring-primary"
             >
               {CONTACT_DATA.email}
             </a>
           </div>
 
           {/* Explore */}
-          <nav aria-label="Footer">
-            <p className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-cream-70">
+          <nav aria-label="Footer navigation">
+            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-cream-70">
               Explore
-            </p>
+            </h3>
             <ul className="mt-5 space-y-3">
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[0.9375rem] text-cream-80 transition-colors hover:text-white"
+                    className="text-[0.9375rem] text-cream-80 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     {item.label}
                   </Link>
@@ -49,14 +49,13 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-cream-70">
+            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-cream-70">
               Contact
-            </p>
+            </h3>
             <address className="mt-5 text-[0.9375rem] not-italic leading-relaxed text-cream-80">
               {CONTACT_DATA.address.map((line) => (
                 <span key={line}>
-                  {line}
-                  <br />
+                  {line}<br />
                 </span>
               ))}
             </address>
@@ -78,7 +77,7 @@ export function Footer() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-cream-70 transition-colors hover:text-white"
+                className="text-cream-70 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {l.label}
               </Link>
